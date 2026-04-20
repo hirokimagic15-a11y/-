@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<!--
+  GRAVITATE OSAKA｜関西ウォーカー P4 純広告（v2：批評反映版）
+  主要修正：
+    1. ヘッドライン「その橋、大阪です。」→「梅田から、30分。」に変更（写真とのバッティング解消）
+    2. 情報序列を「近さ→記録→場所」の感情三段跳びに組み換え
+    3. ファーストビュー画像を豆粒人影が見える空撮に差し替え（畏怖の喚起）
+    4. 巨大な「420」を背景アクセントとして配置（数字を画にする）
+    5. 「ほんまに大阪？」手書き風テキストを挿入（関西文脈への目配せ）
+    6. 離脱防止装置「※日本に、他にありません」「所要：半日」を追加
+    7. QRヒエラルキーを導入（クーポン=大／SNS2種=小）
+
+  ※色について：#B08A3E はブラウザ表示用。実際の雑誌入稿時はCMYK変換で
+    くすむため、特色金（DIC620番台など）または CMYK値での再調整を推奨。
+  ※本HTMLは校正用。印刷入稿時はPDF/X-1a・350dpi・CMYK変換が必要。
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GRAVITATE OSAKA｜関西ウォーカー 純広告 P4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111111;
+    --ink-sub:#333333;
+    --gray:#6b6b6b;
+    --gray-line:#d9d4c8;
+    --paper:#ffffff;
+    --gold:#B08A3E;
+    --gold-deep:#8a6a2a;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:#2a2a2a; font-family:"Noto Sans JP",sans-serif; color:var(--ink);}
+  body{display:flex; justify-content:center; align-items:flex-start; padding:24px; min-height:100vh;}
+
+  /* === A4縦 210mm × 297mm === */
+  .page{
+    width:210mm;
+    height:297mm;
+    background:var(--paper);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+  }
+
+  /* ====================== ファーストビュー (上 約55%) ====================== */
+  .hero{
+    position:relative;
+    width:100%;
+    height:163mm;
+    overflow:hidden;
+    background:#0a0a0a;
+  }
+  .hero__img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:saturate(1.03) contrast(1.04);
+  }
+  .hero__scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 38%, rgba(0,0,0,.55) 76%, rgba(0,0,0,.82) 100%),
+      linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 32%);
+  }
+
+  /* 巨大背景数字「420」 ── 数字そのものを画にする */
+  .hero__bignum{
+    position:absolute;
+    top:-8mm; right:-6mm;
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:120mm;
+    line-height:.82;
+    letter-spacing:-.04em;
+    color:rgba(255,255,255,.11);
+    pointer-events:none;
+    user-select:none;
+    text-shadow:0 0 3mm rgba(0,0,0,.25);
+  }
+  .hero__bignum small{
+    font-size:24mm;
+    vertical-align:22mm;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:rgba(255,255,255,.11);
+  }
+
+  /* ロゴ */
+  .hero__brand{
+    position:absolute;
+    top:7mm; left:10mm;
+    display:flex; align-items:center;
+    z-index:3;
+  }
+  .hero__brand-mark{
+    width:46mm; height:auto;
+    filter:brightness(0) invert(1);
+  }
+
+  /* 右上の媒体注記 */
+  .hero__note{
+    position:absolute;
+    top:9mm; right:10mm;
+    color:rgba(255,255,255,.85);
+    font-size:2.3mm;
+    letter-spacing:.16em;
+    font-weight:500;
+    text-align:right;
+    z-index:3;
+  }
+  .hero__note b{color:var(--gold); font-weight:700; letter-spacing:.2em;}
+
+  /* 手書き風の内心代弁メモ */
+  .hero__whisper{
+    position:absolute;
+    top:56mm; right:12mm;
+    font-family:"Zen Kurenaido", "Noto Sans JP", sans-serif;
+    font-size:5.6mm;
+    color:#fff;
+    letter-spacing:.02em;
+    transform:rotate(-6deg);
+    z-index:3;
+    text-shadow:0 1mm 3mm rgba(0,0,0,.4);
+  }
+  .hero__whisper::before{
+    content:"";
+    position:absolute;
+    left:-4mm; top:3mm;
+    width:3mm; height:3mm;
+    border-left:.4mm solid rgba(255,255,255,.7);
+    border-bottom:.4mm solid rgba(255,255,255,.7);
+    transform:rotate(30deg);
+  }
+
+  /* 大ヘッドライン */
+  .hero__copy{
+    position:absolute;
+    left:14mm; right:14mm;
+    bottom:14mm;
+    color:#fff;
+    z-index:3;
+  }
+  .hero__kicker{
+    font-family:"Noto Sans JP", sans-serif;
+    font-weight:700;
+    font-size:3.2mm;
+    letter-spacing:.3em;
+    color:var(--gold);
+    margin-bottom:3mm;
+  }
+  .hero__headline{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:32mm;
+    line-height:1;
+    letter-spacing:-.02em;
+    text-shadow:0 2mm 8mm rgba(0,0,0,.4);
+    margin-bottom:5mm;
+  }
+  .hero__headline .gold{color:var(--gold);}
+  .hero__rule{
+    width:18mm; height:.7mm; background:var(--gold);
+    margin:0 0 4mm;
+  }
+  .hero__sub{
+    font-family:"Noto Serif JP", serif;
+    font-weight:700;
+    font-size:4.4mm;
+    line-height:1.6;
+    letter-spacing:.04em;
+    color:#f6f2e9;
+    max-width:145mm;
+  }
+  .hero__sub em{font-style:normal; color:var(--gold); font-weight:900; font-size:4.8mm;}
+  .hero__sub .reveal{
+    display:block;
+    margin-top:2mm;
+    font-weight:900;
+    font-size:5.4mm;
+    color:#fff;
+    letter-spacing:.02em;
+  }
+  .hero__sub .reveal b{color:var(--gold); font-weight:900;}
+  .hero__exclusive{
+    margin-top:3mm;
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.5mm;
+    letter-spacing:.2em;
+    color:rgba(255,255,255,.7);
+    font-weight:500;
+  }
+
+  /* ====================== リード ====================== */
+  .lead{
+    padding:7mm 14mm 5mm;
+    border-bottom:.2mm solid var(--gray-line);
+  }
+  .lead__text{
+    font-family:"Noto Serif JP", serif;
+    font-weight:700;
+    font-size:4.3mm;
+    line-height:1.7;
+    color:var(--ink);
+    letter-spacing:.02em;
+  }
+  .lead__text .hl{
+    background:linear-gradient(transparent 62%, rgba(176,138,62,.28) 62%);
+  }
+
+  /* ====================== 体験4種 ====================== */
+  .acts{
+    padding:6mm 14mm 5mm;
+  }
+  .acts__grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:3.2mm;
+  }
+  .act{
+    display:flex; flex-direction:column;
+    border-top:.3mm solid var(--ink);
+    padding-top:2.6mm;
+  }
+  .act__num{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:3.2mm;
+    color:var(--gold-deep);
+    letter-spacing:.16em;
+    margin-bottom:1.4mm;
+  }
+  .act__img{
+    width:100%;
+    height:26mm;
+    object-fit:cover;
+    background:#eee;
+    margin-bottom:2.2mm;
+  }
+  .act__jp{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:6mm;
+    line-height:1;
+    margin-bottom:1mm;
+    letter-spacing:-.01em;
+  }
+  .act__en{
+    font-family:"Noto Sans JP", sans-serif;
+    font-weight:700;
+    font-size:2.3mm;
+    color:var(--gold-deep);
+    letter-spacing:.18em;
+    margin-bottom:1.6mm;
+  }
+  .act__desc{
+    font-family:"Noto Sans JP", sans-serif;
+    font-weight:400;
+    font-size:2.7mm;
+    line-height:1.55;
+    color:var(--ink-sub);
+    letter-spacing:.01em;
+    margin-bottom:1.4mm;
+  }
+  .act__time{
+    margin-top:auto;
+    padding-top:1.4mm;
+    border-top:.15mm dotted var(--gray-line);
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.2mm;
+    letter-spacing:.12em;
+    color:var(--gray);
+    font-weight:700;
+  }
+  .act__time b{color:var(--ink); font-weight:900;}
+
+  /* 社会的証明 */
+  .proof{
+    margin:4mm 14mm 0;
+    padding:3.6mm 5mm;
+    background:#f6f2e9;
+    border-left:.8mm solid var(--gold);
+    display:flex;
+    align-items:baseline;
+    gap:4mm;
+    flex-wrap:wrap;
+  }
+  .proof__lead{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:3.4mm;
+    color:var(--ink);
+    letter-spacing:.04em;
+  }
+  .proof__num{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    color:var(--gold-deep);
+    font-size:5.2mm;
+    letter-spacing:-.01em;
+  }
+  .proof__note{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.2mm;
+    color:var(--gray);
+    margin-left:auto;
+    letter-spacing:.02em;
+  }
+
+  /* ====================== フッター ====================== */
+  .foot{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:60mm;
+    background:#0e0e0e;
+    color:#f4efe3;
+    padding:7mm 14mm;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:8mm;
+  }
+  .foot__left{display:flex; flex-direction:column; justify-content:space-between;}
+  .foot__logo{
+    width:30mm; height:auto;
+    filter:brightness(0) invert(1);
+    opacity:.96;
+  }
+  .foot__info{font-family:"Noto Sans JP", sans-serif; font-size:2.7mm; line-height:1.7; letter-spacing:.04em;}
+  .foot__info .label{
+    display:inline-block;
+    width:12mm;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:.2em;
+    font-size:2.2mm;
+  }
+  .foot__info .tel{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:7.5mm;
+    letter-spacing:.02em;
+    color:#fff;
+    margin-top:1mm;
+    display:block;
+  }
+  .foot__copy{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2mm;
+    color:rgba(255,255,255,.45);
+    letter-spacing:.1em;
+  }
+
+  /* QRヒエラルキー：クーポン=大、SNS=小 */
+  .foot__right{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:5mm;
+    align-items:end;
+  }
+  .qr-main{
+    background:#1a1a1a;
+    padding:4mm;
+    border:.3mm solid var(--gold);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .qr-main__title{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.3mm;
+    letter-spacing:.24em;
+    font-weight:900;
+    color:var(--gold);
+    margin-bottom:2mm;
+  }
+  .qr-main__box{
+    width:28mm; height:28mm;
+    background:#fff;
+    padding:1.4mm;
+    margin-bottom:2mm;
+  }
+  .qr-main__box svg{width:100%; height:100%; display:block;}
+  .qr-main__copy{
+    font-family:"Noto Serif JP", serif;
+    font-weight:900;
+    font-size:3mm;
+    line-height:1.35;
+    color:#fff;
+    letter-spacing:.02em;
+  }
+  .qr-main__copy b{color:var(--gold); font-weight:900; font-size:3.6mm;}
+
+  .qr-subs{
+    display:flex;
+    flex-direction:column;
+    gap:3mm;
+  }
+  .qr-sub{
+    display:flex;
+    align-items:center;
+    gap:2.5mm;
+  }
+  .qr-sub__box{
+    width:14mm; height:14mm;
+    background:#fff;
+    padding:.8mm;
+    flex-shrink:0;
+  }
+  .qr-sub__box svg{width:100%; height:100%; display:block;}
+  .qr-sub__meta{
+    display:flex;
+    flex-direction:column;
+    gap:.4mm;
+  }
+  .qr-sub__title{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.1mm;
+    letter-spacing:.2em;
+    font-weight:700;
+    color:var(--gold);
+  }
+  .qr-sub__id{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:2.2mm;
+    color:#fff;
+    font-weight:500;
+  }
+  .qr-sub__note{
+    font-family:"Noto Sans JP", sans-serif;
+    font-size:1.8mm;
+    color:rgba(255,255,255,.55);
+    letter-spacing:.02em;
+  }
+
+  @page { size:A4 portrait; margin:0; }
+  @media print{
+    body{background:#fff; padding:0;}
+    .page{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero">
+    <img class="hero__img"
+         src="./images/hero.jpg"
+         alt="GRAVITATE OSAKA 全景空撮">
+    <div class="hero__scrim"></div>
+
+    <!-- 巨大背景数字「420」 ── 数字を画にする -->
+    <div class="hero__bignum">420<small>m</small></div>
+
+    <!-- ロゴ -->
+    <div class="hero__brand">
+      <img class="hero__brand-mark"
+           src="./images/logo.png"
+           alt="GRAVITATE OSAKA">
+    </div>
+
+    <!-- 右上注記 -->
+    <div class="hero__note">
+      OSAKA / IBARAKI<br>
+      <b>DAM PARK IBAKITA</b>
+    </div>
+
+    <!-- 関西文脈・読者の内心代弁（手書き風） -->
+    <div class="hero__whisper">ほんまに、大阪？</div>
+
+    <!-- 大ヘッドライン：情報序列は近さ→記録→場所の三段跳び -->
+    <div class="hero__copy">
+      <div class="hero__kicker">ADVERTISEMENT</div>
+      <h1 class="hero__headline">
+        梅田から、<span class="gold">30</span>分。
+      </h1>
+      <div class="hero__rule"></div>
+      <p class="hero__sub">
+        日本最長<em>420m</em>、湖面から<em>55m</em>。
+        <span class="reveal">——その橋、<b>大阪</b>にあります。</span>
+      </p>
+      <p class="hero__exclusive">※ このスケールの吊橋アクティビティ、日本に他にありません。</p>
+    </div>
+  </section>
+
+  <!-- ====================== LEAD ====================== -->
+  <section class="lead">
+    <p class="lead__text">
+      休日の行き先、また同じ場所になっていませんか。
+      車で<span class="hl">30分</span>の距離に、日本で誰も見たことがない景色が、去年できました。
+    </p>
+  </section>
+
+  <!-- ====================== ACTIVITIES ====================== -->
+  <section class="acts">
+    <div class="acts__grid">
+
+      <div class="act">
+        <div class="act__num">01</div>
+        <img class="act__img"
+             src="./images/act01-walk.jpg"
+             alt="BRIDGE WALK">
+        <div class="act__jp">歩く。</div>
+        <div class="act__en">BRIDGE WALK</div>
+        <p class="act__desc">全長420m、湖面から55mの空中散歩。</p>
+        <div class="act__time">所要 <b>約90分</b></div>
+      </div>
+
+      <div class="act">
+        <div class="act__num">02</div>
+        <img class="act__img"
+             src="./images/act02-bungee.jpg"
+             alt="BUNGEE">
+        <div class="act__jp">跳ぶ。</div>
+        <div class="act__en">BUNGEE JUMP</div>
+        <p class="act__desc">ダム湖に向かって、真っ逆さま。</p>
+        <div class="act__time">所要 <b>約60分</b></div>
+      </div>
+
+      <div class="act">
+        <div class="act__num">03</div>
+        <img class="act__img"
+             src="./images/act03-swing.jpg"
+             alt="SWING">
+        <div class="act__jp">揺れる。</div>
+        <div class="act__en">GIANT SWING</div>
+        <p class="act__desc">絶叫と絶景が、同時にくる。</p>
+        <div class="act__time">所要 <b>約45分</b></div>
+      </div>
+
+      <div class="act">
+        <div class="act__num">04</div>
+        <img class="act__img"
+             src="./images/act04-climb.jpg"
+             alt="CLIMB">
+        <div class="act__jp">登る。</div>
+        <div class="act__en">TOWER CLIMB</div>
+        <p class="act__desc">タワーのてっぺんから、大阪平野を一望。</p>
+        <div class="act__time">所要 <b>約60分</b></div>
+      </div>
+
+    </div>
+
+    <!-- 社会的証明 -->
+    <div class="proof">
+      <span class="proof__lead">オープン1年で、</span>
+      <span class="proof__num">来場者10万人超。</span>
+      <span class="proof__lead">TikTokフォロワー</span>
+      <span class="proof__num">5.9万人。</span>
+      <span class="proof__note">※2025年7月時点実績</span>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="foot">
+    <div class="foot__left">
+      <div>
+        <img class="foot__logo"
+             src="./images/logo.png"
+             alt="GRAVITATE OSAKA">
+        <div class="foot__info" style="margin-top:4mm;">
+          <div><span class="label">ADDRESS</span>〒567-0086 大阪府茨木市生保1-2</div>
+          <div><span class="label">ACCESS</span>JR/阪急 茨木駅よりシャトルバス／新名神 茨木千提寺ICすぐ</div>
+          <div><span class="label">HOURS</span>10:00 - 17:00 (最終受付 16:00)</div>
+        </div>
+      </div>
+      <div>
+        <span class="label" style="color:var(--gold); font-size:2.3mm; letter-spacing:.2em; font-weight:700;">RESERVATION</span>
+        <span class="tel">072-000-0000</span>
+        <div class="foot__copy">GRAVITATE OSAKA at DAM PARK IBAKITA</div>
+      </div>
+    </div>
+
+    <div class="foot__right">
+
+      <!-- メインQR：読者サービス（主役） -->
+      <div class="qr-main">
+        <div class="qr-main__title">READER'S GIFT｜読者限定</div>
+        <div class="qr-main__box">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#fff"/>
+            <g fill="#111">
+              <rect x="4" y="4" width="22" height="22"/>
+              <rect x="74" y="4" width="22" height="22"/>
+              <rect x="4" y="74" width="22" height="22"/>
+              <rect x="8" y="8" width="14" height="14" fill="#fff"/>
+              <rect x="78" y="8" width="14" height="14" fill="#fff"/>
+              <rect x="8" y="78" width="14" height="14" fill="#fff"/>
+              <rect x="12" y="12" width="6" height="6"/>
+              <rect x="82" y="12" width="6" height="6"/>
+              <rect x="12" y="82" width="6" height="6"/>
+              <rect x="32" y="6" width="4" height="4"/><rect x="40" y="6" width="4" height="4"/><rect x="48" y="6" width="4" height="4"/><rect x="62" y="6" width="4" height="4"/>
+              <rect x="30" y="14" width="4" height="4"/><rect x="38" y="14" width="4" height="4"/><rect x="54" y="14" width="4" height="4"/><rect x="66" y="14" width="4" height="4"/>
+              <rect x="34" y="22" width="4" height="4"/><rect x="44" y="22" width="4" height="4"/><rect x="50" y="22" width="4" height="4"/><rect x="60" y="22" width="4" height="4"/><rect x="68" y="22" width="4" height="4"/>
+              <rect x="6" y="32" width="4" height="4"/><rect x="18" y="32" width="4" height="4"/><rect x="28" y="32" width="4" height="4"/><rect x="36" y="32" width="4" height="4"/><rect x="46" y="32" width="4" height="4"/><rect x="56" y="32" width="4" height="4"/><rect x="64" y="32" width="4" height="4"/><rect x="76" y="32" width="4" height="4"/><rect x="86" y="32" width="4" height="4"/>
+              <rect x="14" y="40" width="4" height="4"/><rect x="24" y="40" width="4" height="4"/><rect x="34" y="40" width="4" height="4"/><rect x="48" y="40" width="4" height="4"/><rect x="58" y="40" width="4" height="4"/><rect x="70" y="40" width="4" height="4"/><rect x="82" y="40" width="4" height="4"/>
+              <rect x="6" y="48" width="4" height="4"/><rect x="20" y="48" width="4" height="4"/><rect x="30" y="48" width="4" height="4"/><rect x="40" y="48" width="4" height="4"/><rect x="52" y="48" width="4" height="4"/><rect x="64" y="48" width="4" height="4"/><rect x="74" y="48" width="4" height="4"/><rect x="88" y="48" width="4" height="4"/>
+              <rect x="12" y="56" width="4" height="4"/><rect x="26" y="56" width="4" height="4"/><rect x="38" y="56" width="4" height="4"/><rect x="46" y="56" width="4" height="4"/><rect x="60" y="56" width="4" height="4"/><rect x="70" y="56" width="4" height="4"/><rect x="80" y="56" width="4" height="4"/>
+              <rect x="6" y="64" width="4" height="4"/><rect x="18" y="64" width="4" height="4"/><rect x="34" y="64" width="4" height="4"/><rect x="44" y="64" width="4" height="4"/><rect x="56" y="64" width="4" height="4"/><rect x="66" y="64" width="4" height="4"/><rect x="78" y="64" width="4" height="4"/><rect x="90" y="64" width="4" height="4"/>
+              <rect x="32" y="76" width="4" height="4"/><rect x="40" y="76" width="4" height="4"/><rect x="52" y="76" width="4" height="4"/><rect x="60" y="76" width="4" height="4"/><rect x="72" y="76" width="4" height="4"/>
+              <rect x="38" y="84" width="4" height="4"/><rect x="48" y="84" width="4" height="4"/><rect x="58" y="84" width="4" height="4"/><rect x="66" y="84" width="4" height="4"/><rect x="80" y="84" width="4" height="4"/>
+              <rect x="30" y="92" width="4" height="4"/><rect x="42" y="92" width="4" height="4"/><rect x="54" y="92" width="4" height="4"/><rect x="64" y="92" width="4" height="4"/><rect x="76" y="92" width="4" height="4"/><rect x="86" y="92" width="4" height="4"/>
+            </g>
+          </svg>
+        </div>
+        <p class="qr-main__copy"><b>150円OFF</b>クーポン<br>＆ショップ<b>100円券</b></p>
+      </div>
+
+      <!-- サブQR：SNS2種（小さく） -->
+      <div class="qr-subs">
+        <div class="qr-sub">
+          <div class="qr-sub__box">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#fff"/>
+              <g fill="#111">
+                <rect x="4" y="4" width="22" height="22"/><rect x="74" y="4" width="22" height="22"/><rect x="4" y="74" width="22" height="22"/>
+                <rect x="8" y="8" width="14" height="14" fill="#fff"/><rect x="78" y="8" width="14" height="14" fill="#fff"/><rect x="8" y="78" width="14" height="14" fill="#fff"/>
+                <rect x="12" y="12" width="6" height="6"/><rect x="82" y="12" width="6" height="6"/><rect x="12" y="82" width="6" height="6"/>
+                <rect x="34" y="8" width="4" height="4"/><rect x="42" y="8" width="4" height="4"/><rect x="52" y="8" width="4" height="4"/><rect x="64" y="8" width="4" height="4"/>
+                <rect x="32" y="16" width="4" height="4"/><rect x="44" y="16" width="4" height="4"/><rect x="56" y="16" width="4" height="4"/><rect x="66" y="16" width="4" height="4"/>
+                <rect x="30" y="24" width="4" height="4"/><rect x="40" y="24" width="4" height="4"/><rect x="50" y="24" width="4" height="4"/><rect x="58" y="24" width="4" height="4"/><rect x="68" y="24" width="4" height="4"/>
+                <rect x="8" y="32" width="4" height="4"/><rect x="20" y="32" width="4" height="4"/><rect x="30" y="32" width="4" height="4"/><rect x="42" y="32" width="4" height="4"/><rect x="52" y="32" width="4" height="4"/><rect x="62" y="32" width="4" height="4"/><rect x="74" y="32" width="4" height="4"/><rect x="86" y="32" width="4" height="4"/>
+                <rect x="16" y="40" width="4" height="4"/><rect x="26" y="40" width="4" height="4"/><rect x="38" y="40" width="4" height="4"/><rect x="48" y="40" width="4" height="4"/><rect x="60" y="40" width="4" height="4"/><rect x="72" y="40" width="4" height="4"/><rect x="84" y="40" width="4" height="4"/>
+                <rect x="8" y="48" width="4" height="4"/><rect x="22" y="48" width="4" height="4"/><rect x="34" y="48" width="4" height="4"/><rect x="44" y="48" width="4" height="4"/><rect x="54" y="48" width="4" height="4"/><rect x="68" y="48" width="4" height="4"/><rect x="78" y="48" width="4" height="4"/><rect x="90" y="48" width="4" height="4"/>
+                <rect x="14" y="56" width="4" height="4"/><rect x="28" y="56" width="4" height="4"/><rect x="40" y="56" width="4" height="4"/><rect x="50" y="56" width="4" height="4"/><rect x="62" y="56" width="4" height="4"/><rect x="74" y="56" width="4" height="4"/><rect x="82" y="56" width="4" height="4"/>
+                <rect x="6" y="64" width="4" height="4"/><rect x="20" y="64" width="4" height="4"/><rect x="32" y="64" width="4" height="4"/><rect x="46" y="64" width="4" height="4"/><rect x="56" y="64" width="4" height="4"/><rect x="66" y="64" width="4" height="4"/><rect x="78" y="64" width="4" height="4"/><rect x="88" y="64" width="4" height="4"/>
+                <rect x="34" y="76" width="4" height="4"/><rect x="44" y="76" width="4" height="4"/><rect x="56" y="76" width="4" height="4"/><rect x="64" y="76" width="4" height="4"/><rect x="74" y="76" width="4" height="4"/>
+                <rect x="36" y="84" width="4" height="4"/><rect x="46" y="84" width="4" height="4"/><rect x="54" y="84" width="4" height="4"/><rect x="68" y="84" width="4" height="4"/><rect x="82" y="84" width="4" height="4"/>
+                <rect x="32" y="92" width="4" height="4"/><rect x="44" y="92" width="4" height="4"/><rect x="56" y="92" width="4" height="4"/><rect x="66" y="92" width="4" height="4"/><rect x="78" y="92" width="4" height="4"/><rect x="88" y="92" width="4" height="4"/>
+              </g>
+            </svg>
+          </div>
+          <div class="qr-sub__meta">
+            <div class="qr-sub__title">INSTAGRAM</div>
+            <div class="qr-sub__id">@gravitate_osaka</div>
+          </div>
+        </div>
+
+        <div class="qr-sub">
+          <div class="qr-sub__box">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#fff"/>
+              <g fill="#111">
+                <rect x="4" y="4" width="22" height="22"/><rect x="74" y="4" width="22" height="22"/><rect x="4" y="74" width="22" height="22"/>
+                <rect x="8" y="8" width="14" height="14" fill="#fff"/><rect x="78" y="8" width="14" height="14" fill="#fff"/><rect x="8" y="78" width="14" height="14" fill="#fff"/>
+                <rect x="12" y="12" width="6" height="6"/><rect x="82" y="12" width="6" height="6"/><rect x="12" y="82" width="6" height="6"/>
+                <rect x="30" y="6" width="4" height="4"/><rect x="38" y="6" width="4" height="4"/><rect x="50" y="6" width="4" height="4"/><rect x="60" y="6" width="4" height="4"/>
+                <rect x="32" y="14" width="4" height="4"/><rect x="42" y="14" width="4" height="4"/><rect x="54" y="14" width="4" height="4"/><rect x="64" y="14" width="4" height="4"/>
+                <rect x="28" y="22" width="4" height="4"/><rect x="40" y="22" width="4" height="4"/><rect x="48" y="22" width="4" height="4"/><rect x="58" y="22" width="4" height="4"/><rect x="66" y="22" width="4" height="4"/>
+                <rect x="6" y="30" width="4" height="4"/><rect x="16" y="30" width="4" height="4"/><rect x="30" y="30" width="4" height="4"/><rect x="42" y="30" width="4" height="4"/><rect x="52" y="30" width="4" height="4"/><rect x="64" y="30" width="4" height="4"/><rect x="76" y="30" width="4" height="4"/><rect x="88" y="30" width="4" height="4"/>
+                <rect x="12" y="38" width="4" height="4"/><rect x="24" y="38" width="4" height="4"/><rect x="36" y="38" width="4" height="4"/><rect x="48" y="38" width="4" height="4"/><rect x="58" y="38" width="4" height="4"/><rect x="72" y="38" width="4" height="4"/><rect x="86" y="38" width="4" height="4"/>
+                <rect x="6" y="46" width="4" height="4"/><rect x="20" y="46" width="4" height="4"/><rect x="32" y="46" width="4" height="4"/><rect x="42" y="46" width="4" height="4"/><rect x="56" y="46" width="4" height="4"/><rect x="66" y="46" width="4" height="4"/><rect x="78" y="46" width="4" height="4"/><rect x="90" y="46" width="4" height="4"/>
+                <rect x="16" y="54" width="4" height="4"/><rect x="28" y="54" width="4" height="4"/><rect x="40" y="54" width="4" height="4"/><rect x="52" y="54" width="4" height="4"/><rect x="64" y="54" width="4" height="4"/><rect x="74" y="54" width="4" height="4"/><rect x="84" y="54" width="4" height="4"/>
+                <rect x="8" y="62" width="4" height="4"/><rect x="20" y="62" width="4" height="4"/><rect x="36" y="62" width="4" height="4"/><rect x="48" y="62" width="4" height="4"/><rect x="60" y="62" width="4" height="4"/><rect x="72" y="62" width="4" height="4"/><rect x="82" y="62" width="4" height="4"/>
+                <rect x="30" y="76" width="4" height="4"/><rect x="42" y="76" width="4" height="4"/><rect x="52" y="76" width="4" height="4"/><rect x="62" y="76" width="4" height="4"/><rect x="76" y="76" width="4" height="4"/>
+                <rect x="34" y="84" width="4" height="4"/><rect x="44" y="84" width="4" height="4"/><rect x="56" y="84" width="4" height="4"/><rect x="66" y="84" width="4" height="4"/><rect x="84" y="84" width="4" height="4"/>
+                <rect x="30" y="92" width="4" height="4"/><rect x="40" y="92" width="4" height="4"/><rect x="52" y="92" width="4" height="4"/><rect x="62" y="92" width="4" height="4"/><rect x="72" y="92" width="4" height="4"/><rect x="84" y="92" width="4" height="4"/>
+              </g>
+            </svg>
+          </div>
+          <div class="qr-sub__meta">
+            <div class="qr-sub__title">TIKTOK</div>
+            <div class="qr-sub__id">@gravitate_osaka</div>
+            <div class="qr-sub__note">5.9万フォロワー</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
